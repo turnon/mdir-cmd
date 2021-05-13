@@ -33,6 +33,10 @@ func main() {
 			Name:  "c",
 			Usage: "copy instead of move",
 		},
+		&cli.BoolFlag{
+			Name:  "p",
+			Usage: "show progress bar",
+		},
 	}
 
 	app := &cli.App{
@@ -70,6 +74,7 @@ func action(c *cli.Context) error {
 		Src:      args[0],
 		Dest:     args[1],
 		Segments: segments,
+		Progress: c.Bool("p"),
 		Force:    c.Bool("f"),
 		CopyFile: c.Bool("c"),
 	}
